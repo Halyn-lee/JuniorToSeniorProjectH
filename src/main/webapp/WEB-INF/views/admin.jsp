@@ -58,7 +58,9 @@ body {
 #qna,
 #regSnr,
 #mngRpt,
-#lgLst {
+#lgLst,
+#parusrLst,
+#snrusrLst {
 	font-size: 25px;
 	height:50px;
 }
@@ -70,15 +72,15 @@ body {
 <div class="pd">
 <div class="admin">관리자 페이지</div>
 
-	<div class="row row-cols-1 row-cols-md-4 g-4">
+	<div class="row row-cols-2 row-cols-md-3 g-3">
 		<div class="col">
 			<div class="card">
 				<button id="qna" class="btn btn-success"
 					onclick="location.href ='boardList'">문의 답변</button>
 				<div class="card-body">
 					<p class="card-text">
-						<br>문의 게시판에 남겨진 질문 목록에 답변합니다.<br>
-						<br>
+						<br><br>문의 게시판에 남겨진 질문 목록에 답변합니다.<br>
+						<br><br>
 					</p>
 				</div>
 			</div>
@@ -117,6 +119,30 @@ body {
 				<div class="card-body">
 					<p class="card-text">
 						<br>전체 사용자의 매칭 이력 및 동행 여부를 조회할 수 있습니다.<br>
+						<br>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card">
+				<button id="parusrLst" class="btn btn-success"
+					onclick="location.href ='parInfoList'">부모 회원 정보 조회</button>
+				<div class="card-body">
+					<p class="card-text">
+						<br> 부모 사용자의 정보를 조회할 수 있습니다. <br>
+						<br>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card">
+				<button id="snrusrLst" class="btn btn-success"
+					onclick="location.href ='snrInfoList'">시니어 회원 정보 조회</button>
+				<div class="card-body">
+					<p class="card-text">
+						<br>시니어 사용자의 정보를 조회할 수 있습니다. <br>
 						<br>
 					</p>
 				</div>

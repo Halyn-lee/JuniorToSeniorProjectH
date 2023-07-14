@@ -1,9 +1,12 @@
 package com.kids.service.user;
 
+import java.util.List;
 import java.util.Map;
 
 import com.kids.dao.UserInfo_Dao;
 import com.kids.dto.UserInfo_Dto;
+import com.kids.dto.parents.ParentsDetailDto;
+import com.kids.dto.senior.SeniorDetailDto;
 
 public interface UserInfoService {
 	
@@ -23,7 +26,11 @@ public interface UserInfoService {
     // 로그인 ID와 비밀번호 확인 함수 수정: UserInfo_Dto 객체를 반환하는 메서드로 변경
     UserInfo_Dto logInCheck(UserInfo_Dto lgChk);
 
-	
+	public List<UserInfo_Dto> getParInfoList();
+	public List<UserInfo_Dto> getSnrInfoList();
+	public ParentsDetailDto getParInfoById(String id);
+	public SeniorDetailDto getSnrInfoById(String id);
+
 
 	
 }

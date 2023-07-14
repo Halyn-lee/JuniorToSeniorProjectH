@@ -14,13 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.kids.dto.matching.MatchingDto;
+import com.kids.dto.UserInfo_Dto;
+import com.kids.dto.parents.ParentsDetailDto;
 import com.kids.dto.matching.MatchingDetailDto;
 import com.kids.dto.report.ReportDto;
 import com.kids.dto.user.UserDto;
+import com.kids.dto.senior.SeniorDetailDto;
 import com.kids.dto.senior.SeniorDto;
 import com.kids.service.matching.MatchingService;
 import com.kids.service.report.ReportService;
 import com.kids.service.senior.SeniorService;
+import com.kids.service.user.UserInfoService;
 import com.kids.service.user.UserService;
 
 @Controller
@@ -30,6 +34,9 @@ public class ManagingController {
 
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	UserInfoService userInfoService;
 	
 	@Autowired
 	ReportService reportService;
@@ -319,5 +326,45 @@ public class ManagingController {
   
   return "matchingDetailLog";
   }
+  
+  
+  // 부모 회원 가입정보 리스트 조회
+	@GetMapping("/parInfoList")
+	public String parInfoList(Model model
+								,@RequestParam(name="id", required = false) String id) {
+		
+		if(id == null) {
+			List<UserInfo_Dto> parInfoList = userInfoService.getParInfoList();
+			model.addAttribute("parInfoList", parInfoList);
+		} else {
+			ParentsDetailDto parentsDetailDto = new ParentsDetailDto();
+			parentsDetailDto.setId(id);
+			ParentsDetailDto oneParInfo = userInfoService.getParInfoById(id);
+			model.addAttribute("oneParInfo", oneParInfo);
+			return "oneParentInfo";
+		}
+		
+		return "parentInfoList";
+	}
+	
+	// 시니어 회원 가입정보 리스트 조회
+	@GetMapping("/snrInfoList")
+	public String snrInfoList(Model model
+			,@RequestParam(name="id", required = false) String id) {
+		
+		if(id == null) {
+			List<UserInfo_Dto> snrInfoList = userInfoService.getSnrInfoList();
+			model.addAttribute("snrInfoList", snrInfoList);
+		} else {
+			SeniorDetailDto seniorDetailDto = new SeniorDetailDto();
+			seniorDetailDto.setId(id);
+			SeniorDetailDto oneSnrInfo = userInfoService.getSnrInfoById(id);
+			model.addAttribute("oneSnrInfo", oneSnrInfo);
+			return "oneSnrInfo";
+		}
+		
+		return "seniorInfoList";
+	}
+	
 
 }

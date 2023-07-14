@@ -69,4 +69,31 @@
 	WHERE name = #{name} AND phone_number = #{phoneNumber} AND id = ${id}
 	</select>
 	
+	
+	<!-- 관리자 페이지 부모 회원 가입정보 조회용 -->
+	<select id="select_par_info_list" resultType="UserInfo_Dto">
+		select * from user_info
+		where user_code = 'PAR'									
+	</select>
+	
+	<!-- 해당 부모 회원 입력 자녀 정보 조회용 -->
+	<select id="select_par_info_by_id" resultType="ParentsDetailDto"
+										parameterType="String">
+		select * from par
+		where id = #{value}									
+	</select>
+	
+	<!-- 관리자 페이지 시니어 회원 가입정보 조회용 -->
+	<select id="select_snr_info_list" resultType="UserInfo_Dto">
+		select * from user_info
+		where user_code = 'SNR' or user_code = 'BLACK'								
+	</select>
+	
+	<!-- 해당 시니어 입력 정보 조회용 -->
+	<select id="select_snr_info_by_id" resultType="SeniorDetailDto"
+										parameterType="String">
+		select * from snr
+		where id = #{value}									
+	</select>
+	
 </mapper>

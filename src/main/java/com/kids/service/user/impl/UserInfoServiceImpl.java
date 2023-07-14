@@ -2,6 +2,7 @@ package com.kids.service.user.impl;
 
 
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.kids.dao.UserInfo_Dao;
 import com.kids.dto.UserInfo_Dto;
+import com.kids.dto.parents.ParentsDetailDto;
+import com.kids.dto.senior.SeniorDetailDto;
+import com.kids.dto.user.UserDto;
 import com.kids.service.user.UserInfoService;
 
 @Service
@@ -104,6 +108,34 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public int insertSnrSchedule(Map<String, String> map) {
 		// TODO Auto-generated method stub
 		return userInfo_dao.insertSnrSchedule(map);
+	}
+
+	@Override
+	public List<UserInfo_Dto> getParInfoList() {
+		// TODO Auto-generated method stub
+		List<UserInfo_Dto> list = userInfo_dao.selectParInfoList();
+		return list;
+	}
+
+	@Override
+	public List<UserInfo_Dto> getSnrInfoList() {
+		// TODO Auto-generated method stub
+		List<UserInfo_Dto> list = userInfo_dao.selectSnrInfoList();
+		return list;
+	}
+
+	@Override
+	public ParentsDetailDto getParInfoById(String id) {
+		// TODO Auto-generated method stub
+		ParentsDetailDto par = userInfo_dao.selectParInfoById(id);
+		return par;
+	}
+
+	@Override
+	public SeniorDetailDto getSnrInfoById(String id) {
+		// TODO Auto-generated method stub
+		SeniorDetailDto snr = userInfo_dao.selectSnrInfoById(id);
+		return snr;
 	}
 	
 }

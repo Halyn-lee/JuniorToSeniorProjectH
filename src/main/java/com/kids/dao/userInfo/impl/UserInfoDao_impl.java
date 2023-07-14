@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.kids.dao.UserInfo_Dao;
 import com.kids.dto.UserInfo_Dto;
+import com.kids.dto.parents.ParentsDetailDto;
+import com.kids.dto.senior.SeniorDetailDto;
+import com.kids.dto.user.UserDto;
 
 @Repository
 public class UserInfoDao_impl implements UserInfo_Dao{
@@ -105,6 +108,39 @@ public class UserInfoDao_impl implements UserInfo_Dao{
 		
 		return result ;
 		
+	}
+	
+
+	@Override
+	public List<UserInfo_Dto> selectParInfoList() {
+		// TODO Auto-generated method stub
+		List<UserInfo_Dto> list = 
+				sqlSessionTemplate.selectList("userInfo_mapper.select_par_info_list");
+		
+		return list;
+	}
+
+	@Override
+	public List<UserInfo_Dto> selectSnrInfoList() {
+		// TODO Auto-generated method stub
+		List<UserInfo_Dto> list = 
+				sqlSessionTemplate.selectList("userInfo_mapper.select_snr_info_list");
+		
+		return list;
+	}
+
+	@Override
+	public ParentsDetailDto selectParInfoById(String id) {
+		// TODO Auto-generated method stub
+		ParentsDetailDto par = sqlSessionTemplate.selectOne("userInfo_mapper.select_par_info_by_id", id);
+		return par;
+	}
+
+	@Override
+	public SeniorDetailDto selectSnrInfoById(String id) {
+		// TODO Auto-generated method stub
+		SeniorDetailDto snr = sqlSessionTemplate.selectOne("userInfo_mapper.select_snr_info_by_id", id);
+		return snr;
 	}
 
 //	@Override
